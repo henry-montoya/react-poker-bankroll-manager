@@ -24,7 +24,7 @@ class AddSession extends React.Component {
             <h1>Add Session</h1>
           </div>
           <div className="card">
-            <select name="game" />
+            <select name="game">{}</select>
           </div>
         </div>
       </div>
