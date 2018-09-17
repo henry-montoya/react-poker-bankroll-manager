@@ -1,0 +1,39 @@
+.report-container {
+    position: relative;
+    height: 560px;
+    width: 100%;
+    border: solid black 1px;
+    border-radius: 5px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Acme', sans-serif;
+
+}
+.stats-container {
+    height: 100%;
+}
+.row-data {
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+    text-align: center;
+    line-height: 50%;
+    background-color: #C9F9FF;
+    flex-grow: 1;
+}
+
+.row-label {
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+    text-align: center;
+    line-height: 50%;
+    background-color: #2F4550;
+    flex-grow: 1;
+    color: white;
+
+}
+.row-button {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}

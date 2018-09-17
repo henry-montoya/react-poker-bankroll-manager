@@ -1,13 +1,26 @@
 import React from "react";
-import { postNewUser } from "./services/user.service";
+import { postNewUser, getUser, getAllUsers } from "./services/user.service";
 import { connect } from "react-redux";
+import "./Welcome.css";
+//import { Link, withRouter } from "react-router-dom";
 
 class Welcome extends React.Component {
   state = {
     // firstName: "",
     // lastName: "",
-    username: ""
+    currentUser: 1,
+    username: "",
+    newUser: "",
+    showAddUser: false
   };
+
+  componentDidMount() {
+    getAllUsers().then(res => {
+      console.log(res);
+      let users = res.data.resultSets[0];
+      this.props.setUsers(users);
+    });
+  }
 
   handleChange = e => {
     let key = e.target.name;
@@ -21,38 +34,84 @@ class Welcome extends React.Component {
     let user = {
       // firstName: this.state.firstName,
       // lastName: this.state.lastName,
-      userName: this.state.username
+      username: this.state.newUser
     };
     postNewUser(user).then(response => {
       console.log(response);
+      getUser(response.data.outputParameters.Id).then(res => {
+        console.log(res);
+        let newUserData = [
+          {
+            Id: res.data.resultSets[0][0].Id,
+            FirstName: res.data.resultSets[0][0].FirstName,
+            LastName: res.data.resultSets[0][0].LastName,
+            UserName: res.data.resultSets[0][0].Username,
+            Password: res.data.resultSets[0][0].Password,
+            DateCreated: res.data.resultSets[0][0].DateCreated,
+            DateModified: res.data.resultSets[0][0].DateModified
+          }
+        ];
+        this.props.setUsers(newUserData);
+      });
     });
   };
 
   selectUser = () => {
-    this.props.setCurrentUser(this.state.username);
+    this.props.setCurrentUser(this.state.currentUser);
   };
 
   render() {
-    console.log(this.props.game);
     return (
-      <div className="container">
-        <div className="heading">
+      <div className="welcome-container">
+        <div className="welcome-heading">
           <h1>Bankroll Manager</h1>
         </div>
         <div className="welcome-form">
-          <label>Select User</label>
-          <select
-            name="user"
-            value={this.state.currentUser}
-            onChange={this.handleChange}
-          >
-            {this.props.users.map(user => {
-              return <option value={user.id}>{user.username}</option>;
-            })}
-          </select>
-          <button type="button" onClick={this.selectUser}>
-            Go
-          </button>
+          {/* <label>Select User</label> */}
+          <br />
+          {!this.state.showAddUser && (
+            <React.Fragment>
+              <select
+                className="welcome-select"
+                name="currentUser"
+                value={this.state.currentUser}
+                onChange={this.handleChange}
+              >
+                {this.props.users.map(user => {
+                  return <option value={user.Id}>{user.UserName}</option>;
+                })}
+              </select>
+              <button
+                className="welcome-form-go"
+                type="button"
+                onClick={this.selectUser}
+              >
+                Go
+              </button>
+            </React.Fragment>
+          )}
+          {this.state.showAddUser && (
+            <React.Fragment>
+              <input
+                className="welcome-new-user"
+                type="text"
+                name="newUser"
+                value={this.state.newUser}
+                onChange={this.handleChange}
+              />
+              <button
+                className="new-user-start"
+                type="button"
+                onClick={this.addUser}
+              >
+                Get Started
+              </button>
+            </React.Fragment>
+          )}
+
+          {/* <Link to={`/app/events/${this.props.eventId}`}>
+            <Button color="link">Go To Event Page</Button>
+          </Link> */}
           {/* <div>
             <label>First Name</label>
             <input
@@ -74,30 +133,19 @@ class Welcome extends React.Component {
             />
           </div> */}
           <div>
-            <label>Add New User</label>
-            <button
-              type="button"
+            <br />
+            <a
+              style={{ color: "white", float: "right" }}
+              href="#"
               onClick={() => {
                 this.setState({
                   showAddUser: !this.state.showAddUser
                 });
               }}
             >
-              +
-            </button>
-            {this.state.showAddUser && (
-              <React.Fragment>
-                <input
-                  type="text"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                />
-                <button type="button" onClick={this.addUser}>
-                  Get Started
-                </button>
-              </React.Fragment>
-            )}
+              {!this.state.showAddUser ? "add new user" : "cancel"}
+            </a>
+            <br />
           </div>
           <div />
         </div>
@@ -112,6 +160,11 @@ function mapDispatchToProps(dispatch) {
       dispatch({
         type: "SET_CURRENT_USER",
         user
+      }),
+    setUsers: users =>
+      dispatch({
+        type: "ADD_USERS",
+        users
       })
   };
 }

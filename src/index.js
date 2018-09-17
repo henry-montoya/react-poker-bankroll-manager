@@ -1,22 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+//import App from "./App";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Routes } from "./routes";
+
 import rootReducer from "./reducers";
-import Welcome from "./Welcome";
 
 const store = createStore(
   rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-//ReactDOM.render(<App />, document.getElementById('root'));
-
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Router>
+    <Provider store={store}>
+      <Routes />
+    </Provider>
+  </Router>,
   document.getElementById("root")
 );

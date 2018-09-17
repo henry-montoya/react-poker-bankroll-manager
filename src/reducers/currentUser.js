@@ -1,7 +1,7 @@
-const currentUser = (state = {}, action) => {
+const currentUser = (state = null, action) => {
   switch (action.type) {
-    case "SELECT_CURRENT_USER":
-      return [...state, ...action.currentUser];
+    case "SET_CURRENT_USER":
+      return action.user;
     default:
       return state;
   }

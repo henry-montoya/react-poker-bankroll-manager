@@ -1,0 +1,24 @@
+.chart-box {
+    border: solid black 1px;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+    height: 400px;
+    width: 500px;
+    font-family: 'Acme', sans-serif;
+
+}
+.chart-select {
+    margin-top: 40px;
+    position: relative;
+}
+
+.chart-dropdown {
+    position: absolute;
+    left: 47%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    width: 400px;
+    height: 35px;
+    padding-left: 10px;
+}

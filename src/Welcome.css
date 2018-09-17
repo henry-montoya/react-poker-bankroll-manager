@@ -1,0 +1,68 @@
+.welcome-container {
+    font-family: sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: black;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqfZpkSSPo7k0B0Bn88qYqI_3b_NHQLJkhacS76EWVAnCT-TPv);
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+    
+
+.welcome-heading {
+    font-size: 28px;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%);
+
+}
+
+.welcome-form {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 45%;
+}
+
+.welcome-select {
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    padding-left: 10px;
+}
+
+.welcome-select:focus, .welcome-form-go:focus, .welcome-new-user:focus, .new-user-start:focus {
+    outline: none;
+}
+.welcome-form-go {
+    
+    border-radius: 5px;
+    margin-left: 10px;
+    height: 40px;
+    width: 45px;
+}
+
+.welcome-new-user {
+    border-radius: 5px;
+    height: 35px;
+    width: 200px;
+    padding-left: 0px;
+
+}
+
+.new-user-start {
+    border-radius: 5px;
+    height: 40px;
+    width: 75px;
+    margin-left: 10px;
+    position: absolute;
+    top: 20px;
+    
+}
+
