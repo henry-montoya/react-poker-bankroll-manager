@@ -14,8 +14,8 @@ import {
   selectLimitType,
   selectLocation,
   selectLocationType
-} from "./services/option.service";
-import { addNewSession } from "./services/session.service";
+} from "../../services/option.service";
+import { addNewSession } from "../../services/session.service";
 
 class AddSession extends React.Component {
   state = {
@@ -150,7 +150,7 @@ class AddSession extends React.Component {
   postSession = () => {
     let newSession = {
       // userId: this.props.currentUser.id,
-      userId: 1,
+      userId: this.props.currentUser,
       gameId: this.state.gameId,
       gameTypeId: this.state.gameTypeId,
       stakeId: this.state.stakeId,
@@ -166,6 +166,23 @@ class AddSession extends React.Component {
     };
     addNewSession(newSession).then(res => {
       console.log(res);
+      this.setState({
+        gameId: 0,
+        gameTypeId: 0,
+        stakeId: 0,
+        limitTypeId: 0,
+        locationId: 0,
+        locationTypeId: 0,
+        buyIn: 0,
+        cashedOut: 0,
+        startTime: "",
+        endTime: "",
+        breakDuration: 0,
+        notes: null,
+        addOptions: false
+      });
+      this.props.getSessionData();
+      this.props.getReportData();
     });
   };
 
@@ -576,7 +593,8 @@ function mapStateToProps(state) {
     locationTypes: state.locationTypes,
     games: state.games,
     gameTypes: state.gameTypes,
-    limitTypes: state.limitTypes
+    limitTypes: state.limitTypes,
+    currentUser: state.currentUser
   };
 }
 

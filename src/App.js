@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Welcome from "./Welcome";
-import Dashboard from "./Dashboard";
+import Welcome from "./views/Welcome/Welcome";
+import Dashboard from "./views/Dashboard/Dashboard";
 
 class App extends Component {
   render() {

@@ -2,18 +2,15 @@ import React from "react";
 import "./CompletedSessions.css";
 
 class CompletedSessions extends React.Component {
-  seeSessionDetails = () => {
-    console.log("click");
-  };
   render() {
     return (
       <div className="session-container">
         {this.props.sessions.map(session => {
           return (
             <div
-              key={session.id}
+              key={session.Id}
               className="session-item"
-              onClick={this.seeSessionDetails}
+              onClick={() => this.props.toggleModal(session.Id)}
             >
               <p className="session-text">
                 <span>{session.StartTime.slice(5, 7)}</span>/
@@ -33,21 +30,21 @@ class CompletedSessions extends React.Component {
                 )}
                 <span>&nbsp;&nbsp;</span>
                 {session.CashedOut > session.BuyIn ? (
-                  <span style={{ color: "green" }}>
+                  <span className="session-result" style={{ color: "green" }}>
                     +{session.CashedOut - session.BuyIn}
                   </span>
                 ) : (
-                  <span style={{ color: "red" }}>
+                  <span className="session-result" style={{ color: "red" }}>
                     {session.CashedOut - session.BuyIn}
                   </span>
                 )}
-                <a
+                {/* <a
                   href="#"
                   className="session-delete"
                   onClick={this.props.deleteSession}
                 >
                   X&nbsp;&nbsp;
-                </a>
+                </a> */}
               </p>
             </div>
           );

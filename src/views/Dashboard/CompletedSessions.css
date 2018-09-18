@@ -1,0 +1,92 @@
+.session-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.session-result {
+    float: right;
+}
+
+.session-item {
+    border-bottom: solid black 1px;
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 40px;
+    height: 40px;
+    /* margin-top: 0; */
+    flex-grow: 1;
+    background-color: #C9F9FF;
+    color: gray;
+    position: relative;
+
+ 
+}
+.session-item:hover {
+    opacity: .8;
+
+
+}
+
+.session-item::before, .session-item::after {
+    content: '';
+    position:absolute;
+    /* background: pink; */
+    /* height: 100%;
+    width: 100%; */
+    top: .2em;
+    bottom: .2em;
+    left: .2em;
+    right: .2em;
+    flex-grow: 1;
+    z-index: 5;
+    opacity: .7;
+}
+
+.session-item::before {
+    /* background-color:pink; */
+    border-top: solid #2F4550 2px;
+    border-bottom: solid #2F4550 2px;
+
+    transform: scale(0);
+    transition: transform ease-out 250ms;
+}
+
+.session-item::after {
+    /* background-color:pink; */
+    border-left: solid black 2px;
+    border-right: solid black 2px;
+
+    transform: scale(0);
+    transition: transform ease-out 250ms;
+}
+
+.session-item:hover::before {
+    transform: scale(1);
+}
+
+.session-item:hover::after {
+    transform: scale(1);
+}
+
+/* .session-item:hover {
+    background-color: blue;
+} */
+/* .session-text {
+    line-height: 20px;
+
+} */
+
+/* .session-item:hover {
+    background-color: #2F4550;
+    color: white;
+} */
+
+/* .session-delete {
+    float: right;
+    text-decoration: none;
+    color: white;
+    visibility: hidden;
+} */
+/* .session-item:hover .session-delete {
+    visibility: visible;
+} */

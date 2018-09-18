@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+.ticker-container {
+    background-color: black;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    margin-top: 20px;
+    padding-bottom: 30px;
+}
+
+.ticker {
+    display: inline-block;
+    white-space: nowrap;
+    animation-name: ticker;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 800s;
+
+}
+
+.ticker-text {
+    color: rgba(50, 205, 50, .8);
+    font-size: 30px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+@keyframes ticker {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+      }
+    
+      100% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+      }
+}

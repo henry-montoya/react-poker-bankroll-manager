@@ -16,43 +16,59 @@ class Report extends React.Component {
                 <p>Profit/Loss</p>
               </div>
               <div className="row-data">
-                <p>{this.props.profitLoss.toFixed(2)}</p>
+                <p>
+                  {this.props.profitLoss && this.props.profitLoss.toFixed(2)}
+                </p>
               </div>
               <div className="row-label">
                 <p>Hourly</p>
               </div>
               <div className="row-data">
-                <p>{this.props.hourly.toFixed(2)}</p>
+                <p>{this.props.hourly && this.props.hourly.toFixed(2)}</p>
               </div>
               <div className="row-label">
                 <p>$ / Session</p>
               </div>
               <div className="row-data">
-                <p>{this.props.perSession.toFixed(2)}</p>
+                <p>
+                  {this.props.perSession && this.props.perSession.toFixed(2)}
+                </p>
               </div>
               <div className="row-label">
                 <p>Total Hours</p>
               </div>
               <div className="row-data">
-                <p>{this.props.totalHours.toFixed(1)}</p>
+                <p>
+                  {this.props.totalHours && this.props.totalHours.toFixed(1)}
+                </p>
               </div>
               <div className="row-label">
                 <p>Win %</p>
               </div>
               <div className="row-data">
-                <p>{parseInt(this.props.winPercent).toFixed(1)}%</p>
+                <p>
+                  {this.props.winPercent &&
+                    parseInt(this.props.winPercent).toFixed(1)}
+                  %
+                </p>
               </div>
               <div className="row-label">
                 <p>BB/Hr</p>
               </div>
               <div className="row-data">
-                <p>{this.props.avgBbPerHour.toFixed(1)}</p>
+                <p>
+                  {this.props.avgBbPerHour &&
+                    this.props.avgBbPerHour.toFixed(1)}
+                </p>
               </div>
             </div>
           </React.Fragment>
         )}
         {this.state.showSessions && (
-          <CompletedSessions sessions={this.props.sessions} />
+          <CompletedSessions
+            sessions={this.props.sessions}
+            toggleModal={this.props.toggleModal}
+          />
         )}
         <button
           className="row-button"

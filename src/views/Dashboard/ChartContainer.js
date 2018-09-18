@@ -1,7 +1,7 @@
 import React from "react";
-import LineChart from "./LineChart";
-import PieChart from "./PieChart";
-import "./Chart.css";
+import LineChart from "../../charts/LineChart";
+import PieChart from "../../charts/PieChart";
+import "../../charts/Chart.css";
 
 class ChartContainer extends React.Component {
   state = {
@@ -33,7 +33,7 @@ class ChartContainer extends React.Component {
             <PieChart
               sessions={this.props.sessions}
               gameTimePieLabels={this.props.gameTimePieLabels}
-              gameTimePieData={this.props.gameTimePieData}
+              gameTimePieTime={this.props.gameTimePieTime}
             />
           </div>
         )}

@@ -5,11 +5,17 @@ import "./Chart.css";
 class PieChart extends React.Component {
   state = {};
   render() {
+    let options = {
+      title: {
+        display: true,
+        text: "Hours by Game"
+      }
+    };
     const data = {
       labels: this.props.gameTimePieLabels,
       datasets: [
         {
-          data: this.props.gameTimePieData,
+          data: this.props.gameTimePieTime,
           backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
           hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
         }
@@ -17,7 +23,7 @@ class PieChart extends React.Component {
     };
     return (
       <div className="chart-container">
-        <Pie data={data} height={225} />
+        <Pie data={data} options={options} height={225} />
       </div>
     );
   }

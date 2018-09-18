@@ -1,5 +1,5 @@
 import React from "react";
-import { postNewUser, getUser, getAllUsers } from "./services/user.service";
+import { postNewUser, getUser, getAllUsers } from "../../services/user.service";
 import { connect } from "react-redux";
 import "./Welcome.css";
 //import { Link, withRouter } from "react-router-dom";
@@ -8,7 +8,7 @@ class Welcome extends React.Component {
   state = {
     // firstName: "",
     // lastName: "",
-    currentUser: 1,
+    currentUser: 0,
     username: "",
     newUser: "",
     showAddUser: false
@@ -18,9 +18,22 @@ class Welcome extends React.Component {
     getAllUsers().then(res => {
       console.log(res);
       let users = res.data.resultSets[0];
+      let defaultUser = res.data.resultSets[0][0].Id;
+      this.setState({
+        currentUser: defaultUser
+      });
       this.props.setUsers(users);
+      this.props.setCurrentUser(defaultUser);
     });
   }
+  handleUserChange = e => {
+    let user = parseInt(e.target.value);
+    this.setState({
+      currentUser: user
+    });
+
+    this.props.setCurrentUser(user);
+  };
 
   handleChange = e => {
     let key = e.target.name;
@@ -57,7 +70,8 @@ class Welcome extends React.Component {
   };
 
   selectUser = () => {
-    this.props.setCurrentUser(this.state.currentUser);
+    this.props.history.push("/dashboard");
+    localStorage.setItem("currentUser", this.state.currentUser);
   };
 
   render() {
@@ -75,7 +89,7 @@ class Welcome extends React.Component {
                 className="welcome-select"
                 name="currentUser"
                 value={this.state.currentUser}
-                onChange={this.handleChange}
+                onChange={this.handleUserChange}
               >
                 {this.props.users.map(user => {
                   return <option value={user.Id}>{user.UserName}</option>;
