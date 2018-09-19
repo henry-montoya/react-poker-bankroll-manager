@@ -1,3 +1,11 @@
+Poker Bankroll Manager is a tool for professional poker players to track earnings and losses and receive invaluable statistics to measure their performance across many metrics. 
+
+The application is made with ReactJS and a Node.js API backed by a T-SQL database. Redux is used throughout the application for state management. Data visualizations are rendered using Chart.js.
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
