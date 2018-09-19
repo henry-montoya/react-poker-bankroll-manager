@@ -61,3 +61,14 @@
 input:focus, button:focus, textarea:focus, select:focus {
     outline: none;
 }
+
+.save-options-button, .cancel-options-button {
+    border: solid black 1px;
+    background: #e66465;
+    height: 30px;
+}
+
+.save-options-button:active, .cancel-options-button:active {
+    background: radial-gradient(#e66465, #9198e5);
+
+}

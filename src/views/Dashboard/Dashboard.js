@@ -64,6 +64,7 @@ class Dashboard extends React.Component {
     deleteSession(id).then(response => {
       console.log(response);
       this.getSessionData();
+      this.getReportData();
       this.setState({
         showModal: false
       });
@@ -203,7 +204,7 @@ class Dashboard extends React.Component {
     let username = "";
     for (let i = 0; i < this.props.users.length; i++) {
       if (this.props.users[i].Id == this.props.currentUser) {
-        username = this.props.users[i].UserName;
+        username = this.props.users[i].Username;
       }
     }
     return (

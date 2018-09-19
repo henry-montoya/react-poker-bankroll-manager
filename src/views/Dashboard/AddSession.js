@@ -251,6 +251,7 @@ class AddSession extends React.Component {
             {this.state.addOptions && (
               <React.Fragment>
                 <button
+                  className="cancel-options-button"
                   type="button"
                   onClick={() => {
                     this.setState({
@@ -260,7 +261,11 @@ class AddSession extends React.Component {
                 >
                   Cancel
                 </button>
-                <button type="button" onClick={this.saveNewOptions}>
+                <button
+                  type="button"
+                  className="save-options-button"
+                  onClick={this.saveNewOptions}
+                >
                   Save
                 </button>
               </React.Fragment>

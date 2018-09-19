@@ -92,7 +92,7 @@ class Welcome extends React.Component {
                 onChange={this.handleUserChange}
               >
                 {this.props.users.map(user => {
-                  return <option value={user.Id}>{user.UserName}</option>;
+                  return <option value={user.Id}>{user.Username}</option>;
                 })}
               </select>
               <button
